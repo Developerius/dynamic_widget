@@ -19,6 +19,7 @@ class GridViewWidgetParser extends WidgetParser {
     int? crossAxisCount = map['crossAxisCount'];
     bool? reverse = map.containsKey("reverse") ? map['reverse'] : false;
     bool? shrinkWrap = map.containsKey("shrinkWrap") ? map["shrinkWrap"] : false;
+    bool? primary = map.containsKey("primary") ? map["primary"] : true;
     double? cacheExtent =
         map.containsKey("cacheExtent") ? map["cacheExtent"]?.toDouble() : 0.0;
     EdgeInsetsGeometry? padding = map.containsKey('padding')
@@ -46,6 +47,7 @@ class GridViewWidgetParser extends WidgetParser {
         scrollDirection: scrollDirection,
         reverse: reverse,
         shrinkWrap: shrinkWrap,
+        primary: primary,
         cacheExtent: cacheExtent,
         padding: padding,
         mainAxisSpacing: mainAxisSpacing,
@@ -204,6 +206,7 @@ class _GridViewWidgetState extends State<GridViewWidget> {
       scrollDirection: _params.scrollDirection ?? Axis.vertical,
       reverse: _params.reverse ?? false,
       shrinkWrap: _params.shrinkWrap ?? false,
+      primary: _params.primary ?? true,
       cacheExtent: _params.cacheExtent,
     );
   }
@@ -254,6 +257,7 @@ class GridViewParams {
   Axis? scrollDirection;
   bool? reverse;
   bool? shrinkWrap;
+  bool? primary;
   double? cacheExtent;
   EdgeInsetsGeometry? padding;
   double? mainAxisSpacing;
@@ -272,6 +276,7 @@ class GridViewParams {
       this.scrollDirection,
       this.reverse,
       this.shrinkWrap,
+      this.primary,
       this.cacheExtent,
       this.padding,
       this.mainAxisSpacing,
